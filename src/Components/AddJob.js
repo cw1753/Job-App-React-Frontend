@@ -96,7 +96,9 @@ export default class addJob extends Component {
                             </div>
                         </div>
                         <div className="center-align">
-                            <button>Submit</button>
+                            <button className="waves-light btn">
+                                <i className="material-icons right">send</i>Submit
+                            </button>
                         </div>
                     </form>
                 </div>

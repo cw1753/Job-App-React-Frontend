@@ -86,14 +86,24 @@ export default class Job extends Component {
                     <td>{job.applyDate.substring(0,10)}</td>{/*Using substring to show formated date*/}
                     <td>{job.status}</td>
                     <td>{job.note}</td>
-                    <td><button onClick={ () => this.openModal(job, index)}>Edit | Remove</button></td>
+                    <td>
+                        <button className="btn-small" onClick={ () => this.openModal(job, index)}>
+                            <i className="material-icons right">edit</i>Edit/Remove
+                        </button>
+                    </td>
                 </tr>
             )
         })
 
         return (
             <div className="row">
-                <table className="col s10 offset-s1 highlight">
+                <table className="col s10 offset-s1 highlight responsive-table">
+                    <col width="80"/>
+                    <col width="150"/>
+                    <col width="150"/>
+                    <col width="80"/>
+                    <col width="1000"/>
+                    <col width="198"/>
                     <thead>
                         <tr>
                             <th>Company</th>

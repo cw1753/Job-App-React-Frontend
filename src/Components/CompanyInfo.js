@@ -111,11 +111,15 @@ export default class ComapnyInfo extends Component {
                         <div className="input-field">
                             <label htmlFor="newLink">Enter New Link</label>
                             <input id="newLink" type='url' pattern="https://.*" onChange={this.handleChange} />
-                            <button>Submit</button>
+                            <button className="waves-effect waves-light btn">
+                                <i className="material-icons right">send</i>Submit
+                            </button>
                         </div>
                     </form>
                 ) : (
-                    <button onClick={this.handleChangeLink}>Edit Link</button>
+                    <button className="waves-effect waves-light btn" onClick={this.handleChangeLink}>
+                        <i className="material-icons right">insert_link</i>Edit Link
+                    </button>
                 )}
                 
                 <div className="card blue lighten-5">

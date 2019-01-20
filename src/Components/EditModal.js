@@ -73,6 +73,9 @@ export default class EditModal extends Component {
                     isOpen= {this.props.modalIsOpen}
                     onRequestClose= {() => this.props.closeModal("")}
                 >
+                    <button className="btn-flat right" onClick={() => this.props.closeModal("")}>
+                        <i className="material-icons">close</i>
+                    </button>
                     <div className="row"> 
                         <h1>{this.state.company}</h1>
                         <h4>{this.state.jobTitle}</h4>
@@ -92,9 +95,12 @@ export default class EditModal extends Component {
                     </div>
                     <label id="note">Note: </label>
                     <p><textarea id="note" value={this.state.note} onChange={this.handleChange}></textarea></p>
-                    <button onClick={() => this.props.closeModal("")}>Close</button>
-                    <button type="button" onClick={this.handleEdit}>Save</button>
-                    <button className="right" type="button" onClick={this.handleDelete}>Delete</button>
+                    <button className="btn-large center-align" type="button" onClick={this.handleEdit}>
+                        <i className="material-icons right">send</i>Save Changes
+                    </button>
+                    <button className="btn red right" type="button" onClick={this.handleDelete}>
+                        Delete
+                    </button>
                 
                 </ReactModal>
             </div>

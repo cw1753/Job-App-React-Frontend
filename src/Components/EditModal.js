@@ -30,7 +30,7 @@ export default class EditModal extends Component {
     }
 
     handleEdit = (e) => {
-        //e.preventDefault();
+        e.preventDefault();
         fetch("/api/edit-job", {
             method: 'PUT',
             headers: {'Content-Type': 'application/json'},

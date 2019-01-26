@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {checkJwtTimeOut} from '../Helpers/jwt';
 
 export default class ComapnyInfo extends Component {
     constructor(props) {
@@ -13,9 +14,10 @@ export default class ComapnyInfo extends Component {
     }
 
     componentDidMount() {
+        checkJwtTimeOut();
         fetch('/api/company/'+ this.state.company, {
             method: 'GET',
-            mode: 'no-cors'
+            headers: {'Authorization': localStorage.getItem('JWT_TOKEN')}
         }).then( (res) => {
             if(res.status >= 400) {
                 throw new Error("Bad response from server");
@@ -30,7 +32,7 @@ export default class ComapnyInfo extends Component {
 
         fetch('/api/job/'+ this.state.company, {
             method: 'GET',
-            mode: 'no-cors'
+            headers: {'Authorization': localStorage.getItem('JWT_TOKEN')}
         }).then( (res) => {
             if(res.status >= 400) {
                 throw new Error('Bad response from server');
@@ -55,6 +57,7 @@ export default class ComapnyInfo extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
+        checkJwtTimeOut();
         let dataToSend = {
             company: this.state.company,
             link: this.state.newLink
@@ -62,7 +65,7 @@ export default class ComapnyInfo extends Component {
 
         fetch("/api/edit-company-link", {
             method: 'PUT',
-            headers: {'Content-Type': 'application/json'},
+            headers: {'Content-Type': 'application/json', 'Authorization': localStorage.getItem('JWT_TOKEN')},
             body: JSON.stringify(dataToSend)
         }).then( (res) => {
             if(res.status >= 400) {

@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import ReactModal from 'react-modal';
 import {Link} from 'react-router-dom';
+import {checkJwtTimeOut} from '../Helpers/jwt';
 
 export default class addJob extends Component {
     constructor(props) {
@@ -19,9 +20,10 @@ export default class addJob extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
+        checkJwtTimeOut();
         fetch("/api/add-job", {
             method: 'POST',
-            headers: {'Content-Type': 'application/json'},
+            headers: {'Content-Type': 'application/json', 'Authorization': localStorage.getItem('JWT_TOKEN')},
             body: JSON.stringify(this.state)
         }).then( (res) => {
             if(res.status >= 400) {

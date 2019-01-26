@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {checkJwtTimeOut} from '../Helpers/jwt';
 
 export default class Home extends Component {
     constructor(props) {
@@ -15,9 +16,10 @@ export default class Home extends Component {
     }
 
     componentDidMount() {
+        checkJwtTimeOut();
         fetch('/api/job', {
             method: 'GET',
-            mode: 'no-cors'
+            headers: {'Authorization': localStorage.getItem('JWT_TOKEN')}
         }).then( (res) => {
             if(res.status >= 400) {
                 throw new Error('Bad response from server');

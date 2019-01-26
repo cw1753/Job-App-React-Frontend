@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import ReactModal from 'react-modal';
+import {checkJwtTimeOut} from '../Helpers/jwt';
 
 ReactModal.setAppElement('#root');
 
@@ -31,9 +32,10 @@ export default class EditModal extends Component {
 
     handleEdit = (e) => {
         e.preventDefault();
+        checkJwtTimeOut();
         fetch("/api/edit-job", {
             method: 'PUT',
-            headers: {'Content-Type': 'application/json'},
+            headers: {'Content-Type': 'application/json', 'Authorization': localStorage.getItem('JWT_TOKEN')},
             body: JSON.stringify(this.state)
         }).then( (res) => {
             if(res.status >= 400) {
@@ -49,9 +51,10 @@ export default class EditModal extends Component {
     }
 
     handleDelete = () => {
+        checkJwtTimeOut();
         fetch("/api/delete-job", {
             method: 'DELETE',
-            headers: {'Content-Type': 'application/json'},
+            headers: {'Content-Type': 'application/json', 'Authorization': localStorage.getItem('JWT_TOKEN')},
             body: JSON.stringify(this.state)
         }).then( (res) => {
             if(res.status >= 400) {

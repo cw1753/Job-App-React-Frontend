@@ -4,6 +4,7 @@ import AddJob from './Components/AddJob';
 import Home from './Components/Home';
 import CompanyList from './Components/CompanyList';
 import CompanyInfo from './Components/CompanyInfo';
+import Login from './Components/Login';
 import Navbar from './Components/Navbar';
 import { BrowserRouter, Route } from  'react-router-dom';
 
@@ -19,6 +20,7 @@ class App extends Component {
           <Route path='/add-Job' component={AddJob} />
           <Route path="/company-List" component={CompanyList} />
           <Route path='/company-info/:company' component={CompanyInfo} />
+          <Route path='/login' component={Login}/>
         </div>
       </BrowserRouter>
     );

@@ -4,8 +4,6 @@ require('dotenv').config();
 
 export default class Login extends Component {
     responseGoogle = (res) =>{
-        console.log('responseGoogle', res);
-        console.log('accessToken', res.accessToken)
         fetch("/auth/google", {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
@@ -16,7 +14,6 @@ export default class Login extends Component {
             }
             return res.json();
         }).then( (data) => {
-            console.log(data.token); // Check
             //Save token and set timer in local Storage
             localStorage.setItem('JWT_TOKEN', data.token);
             localStorage.setItem('JWT_TIMER', new Date().getTime() + 24*60*60*1000);

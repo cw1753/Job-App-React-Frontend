@@ -34,7 +34,7 @@ export default class addJob extends Component {
             this.setState({
                 modalIsOpen: true
             })
-            console.log(data); // Check
+            // console.log(data); // Check
         }).catch( (err) => {
             console.log("Error: ", err);
         })

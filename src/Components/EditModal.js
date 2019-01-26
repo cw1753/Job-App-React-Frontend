@@ -62,7 +62,7 @@ export default class EditModal extends Component {
             }
             return res.json();
         }).then( (data) => {
-            console.log(data); // Check
+            // console.log(data); // Check
             this.props.closeModal("Deleted");
         }).catch( (err) => {
             console.log("Error: ", err);

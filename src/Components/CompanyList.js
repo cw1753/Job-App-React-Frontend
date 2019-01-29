@@ -12,7 +12,7 @@ export default class CompanyList extends Component {
     }
 
     componentDidMount() {
-        checkJwtTimeOut();
+        checkJwtTimeOut(this.props);
         fetch('/api/company', {
             method: 'GET',
             headers: {'Authorization': localStorage.getItem('JWT_TOKEN')}

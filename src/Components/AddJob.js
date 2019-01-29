@@ -16,11 +16,12 @@ export default class addJob extends Component {
 
             modalIsOpen: false
         }
+        checkJwtTimeOut(this.props);
     }
 
     handleSubmit = (e) => {
         e.preventDefault();
-        checkJwtTimeOut();
+        checkJwtTimeOut(this.props);
         fetch("/api/add-job", {
             method: 'POST',
             headers: {'Content-Type': 'application/json', 'Authorization': localStorage.getItem('JWT_TOKEN')},

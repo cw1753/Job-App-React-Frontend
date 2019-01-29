@@ -14,7 +14,7 @@ export default class ComapnyInfo extends Component {
     }
 
     componentDidMount() {
-        checkJwtTimeOut();
+        checkJwtTimeOut(this.props);
         fetch('/api/company/'+ this.state.company, {
             method: 'GET',
             headers: {'Authorization': localStorage.getItem('JWT_TOKEN')}
@@ -57,7 +57,7 @@ export default class ComapnyInfo extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        checkJwtTimeOut();
+        checkJwtTimeOut(this.props);
         let dataToSend = {
             company: this.state.company,
             link: this.state.newLink

@@ -22,7 +22,7 @@ export default class Job extends Component {
     }
 
     componentDidMount() {
-        checkJwtTimeOut();
+        checkJwtTimeOut(this.props);
         fetch('/api/job', {
             method: 'GET',
             headers: {'Authorization': localStorage.getItem('JWT_TOKEN')}

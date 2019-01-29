@@ -1,8 +1,8 @@
-export const checkJwtTimeOut = () => {
+export const checkJwtTimeOut = (props) => {
     // console.log("In getJWT", localStorage.getItem('JWT_TOKEN'))
     const now = new Date().getTime();
     if(now>=localStorage.getItem('JWT_TIMER')) {
         localStorage.clear();
-        this.props.history.push('/login')
+        props.history.push('/login')
      }
 }

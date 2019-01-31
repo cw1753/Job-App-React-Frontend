@@ -27,7 +27,7 @@ export default class Login extends Component {
         return (
             <div>
                 <GoogleLogin
-                    clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
+                    client_id={process.env.REACT_APP_GOOGLE_CLIENT_ID}
                     buttonText="Google Login"
                     onSuccess={this.responseGoogle}
                     onFailure={this.responseGoogle}

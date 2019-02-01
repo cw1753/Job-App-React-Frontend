@@ -5,7 +5,7 @@ require('dotenv').config();
 
 export default class Login extends Component {
     responseGoogle = (res) =>{
-        fetch("/auth/google", {
+        fetch(process.env.REACT_APP_API_URL + "/auth/google", {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({"access_token": res.accessToken})

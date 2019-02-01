@@ -8,6 +8,7 @@ export default class Login extends Component {
         fetch(process.env.REACT_APP_API_URL + "/auth/google", {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
+            mode: 'no-cors',
             body: JSON.stringify({"access_token": res.accessToken})
         }).then( (res) => {
             if(res.status >= 400) {

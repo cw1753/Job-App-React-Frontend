@@ -25,8 +25,7 @@ export default class Job extends Component {
         checkJwtTimeOut(this.props);
         fetch(process.env.REACT_APP_API_URL + '/api/job', {
             method: 'GET',
-            headers: {'Authorization': localStorage.getItem('JWT_TOKEN')},
-            mode: 'no-cors'
+            headers: {'Authorization': localStorage.getItem('JWT_TOKEN')}
         }).then( (res) => {
             if(res.status >= 400) {
                 throw new Error('Bad response from server');

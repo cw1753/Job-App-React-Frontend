@@ -15,7 +15,8 @@ export default class ComapnyInfo extends Component {
 
     componentDidMount() {
         checkJwtTimeOut(this.props);
-        fetch('/api/company/'+ this.state.company, {
+        //Get company info
+        fetch(process.env.REACT_APP_API_URL + '/api/company/'+ this.state.company, {
             method: 'GET',
             headers: {'Authorization': localStorage.getItem('JWT_TOKEN')}
         }).then( (res) => {
@@ -29,8 +30,9 @@ export default class ComapnyInfo extends Component {
         }).catch(err => {
             console.log("Error: ", err);
         })
-
-        fetch('/api/job/'+ this.state.company, {
+        
+        //Get Job info for specific company
+        fetch(process.env.REACT_APP_API_URL + '/api/job/'+ this.state.company, {
             method: 'GET',
             headers: {'Authorization': localStorage.getItem('JWT_TOKEN')}
         }).then( (res) => {
@@ -63,7 +65,7 @@ export default class ComapnyInfo extends Component {
             link: this.state.newLink
         }
 
-        fetch("/api/edit-company-link", {
+        fetch(process.env.REACT_APP_API_URL + '/api/edit-company-link', {
             method: 'PUT',
             headers: {'Content-Type': 'application/json', 'Authorization': localStorage.getItem('JWT_TOKEN')},
             body: JSON.stringify(dataToSend)

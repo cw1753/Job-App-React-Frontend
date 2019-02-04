@@ -22,7 +22,7 @@ export default class addJob extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
         checkJwtTimeOut(this.props);
-        fetch("/api/add-job", {
+        fetch(process.env.REACT_APP_API_URL + '/api/add-job', {
             method: 'POST',
             headers: {'Content-Type': 'application/json', 'Authorization': localStorage.getItem('JWT_TOKEN')},
             body: JSON.stringify(this.state)

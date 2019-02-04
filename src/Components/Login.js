@@ -5,9 +5,10 @@ require('dotenv').config();
 
 export default class Login extends Component {
     responseGoogle = (res) =>{
-        fetch("/auth/google", {
+        fetch(process.env.REACT_APP_API_URL + "/auth/google", {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
+            mode: 'cors',
             body: JSON.stringify({"access_token": res.accessToken})
         }).then( (res) => {
             if(res.status >= 400) {
@@ -18,10 +19,10 @@ export default class Login extends Component {
             //Save token and set timer in local Storage
             localStorage.setItem('JWT_TOKEN', data.token);
             localStorage.setItem('JWT_TIMER', new Date().getTime() + 24*60*60*1000);
+            this.props.history.push('/');
         }).catch( (err) => {
             console.log("Error: ", err);
         })
-        this.props.history.push('/');
     }
 
     responseGithub = (res) =>{

@@ -23,7 +23,7 @@ export default class Job extends Component {
 
     componentDidMount() {
         checkJwtTimeOut(this.props);
-        fetch('/api/job', {
+        fetch(process.env.REACT_APP_API_URL + '/api/job', {
             method: 'GET',
             headers: {'Authorization': localStorage.getItem('JWT_TOKEN')}
         }).then( (res) => {

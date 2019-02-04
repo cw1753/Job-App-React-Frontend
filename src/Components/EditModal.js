@@ -33,7 +33,7 @@ export default class EditModal extends Component {
     handleEdit = (e) => {
         e.preventDefault();
         checkJwtTimeOut(this.props);
-        fetch("/api/edit-job", {
+        fetch(process.env.REACT_APP_API_URL + '/api/edit-job', {
             method: 'PUT',
             headers: {'Content-Type': 'application/json', 'Authorization': localStorage.getItem('JWT_TOKEN')},
             body: JSON.stringify(this.state)
@@ -52,7 +52,7 @@ export default class EditModal extends Component {
 
     handleDelete = () => {
         checkJwtTimeOut(this.props);
-        fetch("/api/delete-job", {
+        fetch(process.env.REACT_APP_API_URL + '/api/delete-job', {
             method: 'DELETE',
             headers: {'Content-Type': 'application/json', 'Authorization': localStorage.getItem('JWT_TOKEN')},
             body: JSON.stringify(this.state)
